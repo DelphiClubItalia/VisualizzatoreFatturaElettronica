@@ -1,3 +1,37 @@
+{***************************************************************************}
+{                                                                           }
+{           Visualizzatore Fattura Elettronica "LITE"                       }
+{                                                                           }
+{           Copyright (C) 2018 Giancarlo Oneglio                            }
+{                                                                           }
+{           giancarlo.oneglio@gmail.com                                     }
+{                                                                           }
+{                                                                           }
+{***************************************************************************}
+{                                                                           }
+{  This file is part of VisualizzatoreFatturaElettronicaLITE                }
+{                                                                           }
+{  Licensed under the GNU Lesser General Public License, Version 3;         }
+{  you may not use this file except in compliance with the License.         }
+{                                                                           }
+{  VisualizzatoreFatturaElettronicaLITE is free software:                   }
+{  you can redistribute it and/or modify                                    }
+{  it under the terms of the GNU Lesser General Public License as published }
+{  by the Free Software Foundation, either version 3 of the License, or     }
+{  (at your option) any later version.                                      }
+{                                                                           }
+{  VisualizzatoreFatturaElettronicaLITE is distributed in the hope          }
+{  that it will be useful, but WITHOUT ANY WARRANTY;                        }
+{  without even the implied warranty of                                     }
+{  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            }
+{  GNU Lesser General Public License for more details.                      }
+{                                                                           }
+{  You should have received a copy of the GNU Lesser General Public License }
+{  along with VisualizzatoreFatturaElettronicaLITE                          }
+{  If not, see <http://www.gnu.org/licenses/>.                              }
+{                                                                           }
+{***************************************************************************}
+
 unit uMainform;
 
 interface
@@ -35,7 +69,6 @@ uses
     Xml.XMLIntf,
     Xml.Win.msxmldom,
     Xml.XMLDoc
-
     ;
 
 type
@@ -72,7 +105,7 @@ type
         procedure ListBoxFEinDblClick(Sender: TObject);
         procedure ListBoxFEoutDblClick(Sender: TObject);
         procedure SpeedButton1Click(Sender: TObject);
-    procedure ComboBoxStileSelect(Sender: TObject);
+		procedure ComboBoxStileSelect(Sender: TObject);
     private
         { Private declarations }
         currDir,config_file: string;
@@ -287,7 +320,6 @@ begin
                 ListBoxFEin.Items.Add(ExtractFileName(fn_xml));
             end;
         end;
-
     except
         self.Cursor:=crDefault;
         MessageBox(0, PChar('La directory '+dirIn+' non è accessibile!'), 'Attenzione', MB_ICONWARNING or MB_OK or MB_TOPMOST or MB_TASKMODAL or MB_DEFBUTTON1);
@@ -319,17 +351,17 @@ end;
 procedure TMainform.SetOpticalZoom(Value : integer);
 var vaIn, vaOut : OleVariant;
 begin
-  vaIn := null;
-  vaOut := null;
-  WebBrowserFEpreview.ExecWB(OLECMDID_OPTICAL_GETZOOMRANGE,OLECMDEXECOPT_DONTPROMPTUSER,vaIn,vaOut);
-  if Value < LoWord(DWORD(vaOut)) then
-      vaIn := LoWord(DWORD(vaOut))
+    vaIn := null;
+    vaOut := null;
+    WebBrowserFEpreview.ExecWB(OLECMDID_OPTICAL_GETZOOMRANGE,OLECMDEXECOPT_DONTPROMPTUSER,vaIn,vaOut);
+    if Value < LoWord(DWORD(vaOut)) then
+        vaIn := LoWord(DWORD(vaOut))
     else
-      if Value > HiWord(DWORD(vaOut)) then
-        vaIn := HiWord(DWORD(vaOut))
-      else
-        vaIn := Value;
-  WebBrowserFEpreview.ExecWB(OLECMDID_OPTICAL_ZOOM,OLECMDEXECOPT_DONTPROMPTUSER,vaIn,vaOut);
+        if Value > HiWord(DWORD(vaOut)) then
+            vaIn := HiWord(DWORD(vaOut))
+        else
+            vaIn := Value;
+    WebBrowserFEpreview.ExecWB(OLECMDID_OPTICAL_ZOOM,OLECMDEXECOPT_DONTPROMPTUSER,vaIn,vaOut);
 end;
 
 procedure TMainform.SpeedButton1Click(Sender: TObject);
