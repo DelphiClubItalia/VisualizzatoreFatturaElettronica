@@ -1,3 +1,37 @@
+{***************************************************************************}
+{                                                                           }
+{           Visualizzatore Fattura Elettronica "LITE"                       }
+{                                                                           }
+{           Copyright (C) 2018 Giancarlo Oneglio                            }
+{                                                                           }
+{           giancarlo.oneglio@gmail.com                                     }
+{                                                                           }
+{                                                                           }
+{***************************************************************************}
+{                                                                           }
+{  This file is part of VisualizzatoreFatturaElettronicaLITE                }
+{                                                                           }
+{  Licensed under the GNU Lesser General Public License, Version 3;         }
+{  you may not use this file except in compliance with the License.         }
+{                                                                           }
+{  VisualizzatoreFatturaElettronicaLITE is free software:                   }
+{  you can redistribute it and/or modify                                    }
+{  it under the terms of the GNU Lesser General Public License as published }
+{  by the Free Software Foundation, either version 3 of the License, or     }
+{  (at your option) any later version.                                      }
+{                                                                           }
+{  VisualizzatoreFatturaElettronicaLITE is distributed in the hope          }
+{  that it will be useful, but WITHOUT ANY WARRANTY;                        }
+{  without even the implied warranty of                                     }
+{  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            }
+{  GNU Lesser General Public License for more details.                      }
+{                                                                           }
+{  You should have received a copy of the GNU Lesser General Public License }
+{  along with VisualizzatoreFatturaElettronicaLITE                          }
+{  If not, see <http://www.gnu.org/licenses/>.                              }
+{                                                                           }
+{***************************************************************************}
+
 unit uMainform;
 
 interface
@@ -72,7 +106,7 @@ type
         procedure ListBoxFEinDblClick(Sender: TObject);
         procedure ListBoxFEoutDblClick(Sender: TObject);
         procedure SpeedButton1Click(Sender: TObject);
-    procedure ComboBoxStileSelect(Sender: TObject);
+        procedure ComboBoxStileSelect(Sender: TObject);
     private
         { Private declarations }
         currDir,config_file: string;
@@ -241,15 +275,18 @@ begin
     dirOut:=currDir+'fe_clienti';
     dirOutSearch:=TRUE;
 
-//    RegistryEntry := TRegistry.Create;
-//    RegistryEntry.RootKey := HKEY_CURRENT_USER;
-//    RegistryEntry.OpenKeyReadOnly('Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION');
-//    if RegistryEntry.ValueExists(fn_exe) = false then
-//    begin
-//        ShowMessage('compatibilità IE di questo eseguibile non definita nel registro');
-//        WebBrowserFEpreview.Navigate('http://www.mybrowserinfo.com/');
-//    end;
-//    RegistryEntry.Free;
+	//utilizzare IEFIX.reg per aggiungere nel registro la compatibilità del twebbrowser con la versione IE presente
+	//oppure gestire il controllo da programma
+	
+	//    RegistryEntry := TRegistry.Create;
+	//    RegistryEntry.RootKey := HKEY_CURRENT_USER;
+	//    RegistryEntry.OpenKeyReadOnly('Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION');
+	//    if RegistryEntry.ValueExists(fn_exe) = false then
+	//    begin
+	//        ShowMessage('compatibilità IE di questo eseguibile non definita nel registro');
+	//        WebBrowserFEpreview.Navigate('http://www.mybrowserinfo.com/');
+	//    end;
+	//    RegistryEntry.Free;
 
     IniCfg:=TIniFile.Create(currDir+'config.ini');
     template:=IniCfg.ReadString('config','template','');
