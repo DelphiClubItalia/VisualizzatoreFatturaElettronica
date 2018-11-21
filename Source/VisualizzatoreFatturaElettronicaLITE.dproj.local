@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/08/21 16:03:41.000.818,=C:\Users\gian\Documents\Embarcadero\Studio\Projects\Unit10.pas</Transaction>
+    <Transaction>2018/08/31 15:26:22.000.039,=C:\Users\gian\Documents\Embarcadero\Studio\Projects\Unit10.pas</Transaction>
+    <Transaction>2018/10/20 18:30:06.000.617,=C:\Users\gian\Documents\Embarcadero\Studio\Projects\Unit11.pas</Transaction>
+    <Transaction>2018/10/20 18:30:58.000.830,F:\LAVORI2018\FATTURA PA B2B\VISUALIZZA_FATTURA\Unit11.pas=C:\Users\gian\Documents\Embarcadero\Studio\Projects\Unit11.pas</Transaction>
+    <Transaction>2018/10/20 18:30:58.000.830,F:\LAVORI2018\FATTURA PA B2B\VISUALIZZA_FATTURA\Unit11.dfm=C:\Users\gian\Documents\Embarcadero\Studio\Projects\Unit11.dfm</Transaction>
+    <Transaction>2018/10/20 18:31:19.000.350,F:\LAVORI2018\FATTURA PA B2B\VISUALIZZA_FATTURA\VisualizzaFatturaElettronica.dproj=C:\Users\gian\Documents\Embarcadero\Studio\Projects\Project9.dproj</Transaction>
+    <Transaction>2018/11/14 10:40:28.000.332,F:\LAVORI2018\FATTURA PA B2B\VISUALIZZA_FATTURA\uMainform.pas=F:\LAVORI2018\FATTURA PA B2B\VISUALIZZA_FATTURA\Unit11.pas</Transaction>
+    <Transaction>2018/11/14 10:40:28.000.332,F:\LAVORI2018\FATTURA PA B2B\VISUALIZZA_FATTURA\uMainform.dfm=F:\LAVORI2018\FATTURA PA B2B\VISUALIZZA_FATTURA\Unit11.dfm</Transaction>
+    <Transaction>2018/11/14 10:40:54.000.371,=F:\LAVORI2018\FATTURA PA B2B\VISUALIZZA_FATTURA\Unit1.pas</Transaction>
+    <Transaction>2018/11/14 10:44:49.000.678,F:\LAVORI2018\FATTURA PA B2B\VISUALIZZA_FATTURA\uInformazioni.dfm=F:\LAVORI2018\FATTURA PA B2B\VISUALIZZA_FATTURA\Unit1.dfm</Transaction>
+    <Transaction>2018/11/14 10:44:49.000.678,F:\LAVORI2018\FATTURA PA B2B\VISUALIZZA_FATTURA\uInformazioni.pas=F:\LAVORI2018\FATTURA PA B2B\VISUALIZZA_FATTURA\Unit1.pas</Transaction>
+    <Transaction>2018/11/14 11:23:23.000.354,F:\LAVORI2018\FATTURA PA B2B\VISUALIZZA_FATTURA\VisualizzatoreFatturaElettronica.dproj=F:\LAVORI2018\FATTURA PA B2B\VISUALIZZA_FATTURA\VisualizzaFatturaElettronica.dproj</Transaction>
+    <Transaction>2018/11/21 15:10:47.384,F:\LAVORI2018\FATTURA PA B2B\VISUALIZZA_FATTURA\==SOURCE_LITE==\VisualizzatoreFatturaElettronicaLITE.dproj=F:\LAVORI2018\FATTURA PA B2B\VISUALIZZA_FATTURA\==SOURCE_LITE==\VisualizzatoreFatturaElettronica.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
