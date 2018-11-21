@@ -1,5 +1,5 @@
-# VisualizzatoreFatturaElettronica
-Tool portable per visualizzare e stampare XML e XML.P7M 
+# VisualizzatoreFatturaElettronica "lite"
+Tool portable per visualizzare e stampare XML 
 
 ![Image](https://github.com/DelphiClubItalia/VisualizzatoreFatturaElettronica/blob/master/Screenshot/Template%20AdE.png)
 
