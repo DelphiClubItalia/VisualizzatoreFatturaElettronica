@@ -298,6 +298,9 @@ begin
         ComboBoxStile.ItemIndex:=0;
 
     ReadXmlList(dirIn,dirOut);
+
+    if (ParamCount > 0) and SameText(ExtractFileExt(ParamStr(1)), '.xml') then
+      ApriFatturaXML(ParamStr(1));
 end;
 
 procedure TMainform.ReadXmlList(dirIn,dirOut:string);
