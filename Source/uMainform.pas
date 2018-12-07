@@ -107,6 +107,7 @@ type
         procedure ListBoxFEoutDblClick(Sender: TObject);
         procedure SpeedButton1Click(Sender: TObject);
         procedure ComboBoxStileSelect(Sender: TObject);
+        procedure FormDestroy(Sender: TObject);
     private
         { Private declarations }
         currDir,config_file: string;
@@ -118,6 +119,7 @@ type
         procedure SetFontSize(Size: integer);
         procedure SetOpticalZoom(Value: integer);
         procedure ReadXmlList(dirIn, dirOut: string);
+        procedure WMDropFiles(var Msg: TMessage); message WM_DROPFILES;
     public
         { Public declarations }
     end;
@@ -134,7 +136,7 @@ implementation
 
 {$R *.dfm}
 
-uses uInformazioni;
+uses ShellAPI, uInformazioni;
 
 procedure WB_LoadHTML(WebBrowser: TWebBrowser; HTMLCode: string);
 var
@@ -253,6 +255,7 @@ var
     template,fn_exe, fn_xsl: string;
     IniCfg:TIniFile;
 begin
+    DragAcceptFiles(Handle, True);
     CoInternetSetFeatureEnabled(FEATURE_DISABLE_NAVIGATION_SOUNDS,SET_FEATURE_ON_PROCESS,True);
     currDir:=ExtractFilePath(ParamStr(0));
     config_file:=ChangeFileExt(ParamStr(0),'.cfg');
@@ -301,6 +304,11 @@ begin
 
     if (ParamCount > 0) and SameText(ExtractFileExt(ParamStr(1)), '.xml') then
       ApriFatturaXML(ParamStr(1));
+end;
+
+procedure TMainform.FormDestroy(Sender: TObject);
+begin
+    DragAcceptFiles(Handle, False);
 end;
 
 procedure TMainform.ReadXmlList(dirIn,dirOut:string);
@@ -389,6 +397,29 @@ end;
 procedure TMainform.WebBrowserFEpreviewDocumentComplete(ASender: TObject; const pDisp: IDispatch; const URL: OleVariant);
 begin
     SetOpticalZoom(100);
+end;
+
+procedure TMainform.WMDropFiles(var Msg: TMessage);
+var
+  LHandleDrop: THandle;
+  LCount: Integer;
+  LNameLength: Integer;
+  LIndex: Integer;
+  LFileName: string;
+
+begin
+  LHandleDrop := Msg.wParam;
+  LCount := DragQueryFile(LHandleDrop, $FFFFFFFF, nil, 0);
+
+  for LIndex := 0 to LCount-1 do begin
+    LNameLength := DragQueryFile(LHandleDrop, LIndex, nil, 0);
+    SetLength(LFileName, LNameLength);
+    DragQueryFile(LHandleDrop, LIndex, PWideChar(LFileName), LNameLength+1);
+
+    ApriFatturaXML(LFileName);
+  end;
+
+  DragFinish(LHandleDrop);
 end;
 
 procedure TMainform.SetFontSize(Size: integer);

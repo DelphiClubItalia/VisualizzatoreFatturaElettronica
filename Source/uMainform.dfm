@@ -14,6 +14,7 @@ object Mainform: TMainform
   PopupMenu = PopupMenuMainform
   Position = poScreenCenter
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 15
   object Splitter1: TSplitter
@@ -65,8 +66,6 @@ object Mainform: TMainform
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 2
-    ExplicitTop = 78
-    ExplicitHeight = 616
     DesignSize = (
       240
       694)
@@ -138,7 +137,6 @@ object Mainform: TMainform
       Anchors = [akLeft, akTop, akRight, akBottom]
       Caption = 'Fatture passive'
       TabOrder = 0
-      ExplicitHeight = 252
       DesignSize = (
         223
         330)
@@ -186,7 +184,6 @@ object Mainform: TMainform
       ParentBackground = False
       ParentColor = False
       TabOrder = 2
-      ExplicitTop = 490
       DesignSize = (
         223
         118)
@@ -343,7 +340,6 @@ object Mainform: TMainform
       Anchors = [akLeft, akRight, akBottom]
       TabOrder = 3
       OnSelect = ComboBoxStileSelect
-      ExplicitTop = 458
     end
   end
   object XMLDocument1: TXMLDocument
