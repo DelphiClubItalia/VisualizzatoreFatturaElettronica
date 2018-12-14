@@ -68,13 +68,13 @@ uses
     Xml.xmldom,
     Xml.XMLIntf,
     Xml.Win.msxmldom,
-    Xml.XMLDoc
+    Xml.XMLDoc,
+    Winapi.msxml
 
     ;
 
 type
     TMainform = class(TForm)
-        XMLDocument1: TXMLDocument;
         WebBrowserFEpreview: TWebBrowser;
         StatusBar1: TStatusBar;
         Splitter1: TSplitter;
@@ -113,9 +113,9 @@ type
         dirIn,dirOut: string;
         dirInSearch, dirOutSearch: Boolean;
         file_attuale:string;
-        procedure ApriFatturaXML(XMLDoc: string);
-        function GetFontSize: integer;
-        procedure SetFontSize(Size: integer);
+        procedure ApriFatturaXML(const XMLFileName: string);
+//        function GetFontSize: integer;
+//        procedure SetFontSize(Size: integer);
         procedure SetOpticalZoom(Value: integer);
         procedure ReadXmlList(dirIn, dirOut: string);
     public
@@ -166,6 +166,17 @@ begin
     end;
 end;
 
+function TransformaXML(const XMLFileName, XSLFileName: string): string;
+var
+  xmlDoc, xslStyle :IXMLDOMDocument;
+begin
+  xmlDoc := CoDOMDocument.Create;
+  xslStyle := CoDOMDocument.Create;
+  xmlDoc.load(XMLFileName);
+  xslStyle.load(XSLFileName);
+  Result := xmlDoc.transformNode(xslStyle);
+end;
+
 procedure TMainform.Aggiornalistadocumenti1Click(Sender: TObject);
 begin
     WebBrowserFEpreview.Navigate('about:blank');
@@ -181,46 +192,31 @@ begin
    end;
 end;
 
-procedure TMainform.ApriFatturaXML(XMLDoc: string);
+procedure TMainform.ApriFatturaXML(const XMLFileName: string);
 var
-    Node: IXMLNode;
-    XMLTXT: WideString;
-    fn_tmp,style: string;
-    TagBegin, TagEnd, TagLength: integer;
-    txt: WideString;
+  StyleFileName: string;
+  HTMLDoc: string;
+  HTMLFileName: string;
 begin
-    file_attuale:=XMLDoc;
+    file_attuale:=XMLFileName;
     try
-        style:='fe_templates\'+ComboBoxStile.Items[ComboBoxStile.ItemIndex];
-        txt := TFile.ReadAllText(XMLDoc);
 
-        repeat
-            TagBegin := Pos(WideString('<?xml-stylesheet'), WideString(txt));
-            TagEnd := Pos('>', txt, TagBegin + 1);
-            TagLength := TagEnd - TagBegin + 1;
-            Delete(txt, TagBegin, TagLength);
-        until TagLength>0;
+        // Esegue la trasformazione
+        StyleFileName := 'fe_templates\'+ComboBoxStile.Items[ComboBoxStile.ItemIndex];
+        HTMLDoc := TransformaXML(XMLFileName, StyleFileName);
+        HTMLFileName := System.IOUtils.TPath.GetTempFileName + '.html';
+        TFile.WriteAllText(HTMLFileName, HTMLDoc, TEncoding.UTF8);
 
-        XMLDocument1.Active := false;
-        XMLDocument1.Xml.Text := txt;
-        XMLDocument1.Active := true;
+        WebBrowserFEpreview.Navigate(HTMLFileName);
 
-        Node := XMLDocument1.CreateNode('xml-stylesheet', ntProcessingInstr, 'type="text/xsl" href="' + currDir+style + '"');
-        XMLDocument1.ChildNodes.Insert(1, Node);
-        fn_tmp := System.IOUtils.TPath.GetTempFileName + '.xml';
-        XMLDocument1.Xml.SaveToFile(fn_tmp);
-        WebBrowserFEpreview.Navigate(fn_tmp);
-
-        StatusBar1.Panels[0].Text := ExtractFileName(XMLDoc);
+        StatusBar1.Panels[0].Text := ExtractFileName(XMLFileName);
 
     except
         on e:Exception do
         begin
-            ShowMessage('Errore durante apertura file: '+XMLDoc+#13+#10+'['+e.Message+']');
+            ShowMessage('Errore durante apertura file: '+XMLFileName+#13+#10+'['+e.Message+']');
         end;
     end;
-    txt:='';
-    XMLDocument1.Active := false;
 end;
 
 procedure TMainform.BitBtnPrintPreviewClick(Sender: TObject);
@@ -249,7 +245,6 @@ end;
 
 procedure TMainform.FormCreate(Sender: TObject);
 var
-    RegistryEntry: TRegistry;
     template,fn_exe, fn_xsl: string;
     IniCfg:TIniFile;
 begin
@@ -391,23 +386,22 @@ begin
     SetOpticalZoom(100);
 end;
 
-procedure TMainform.SetFontSize(Size: integer);
-var
-  vIn, vOut: Olevariant;
-begin
-    vIn := Size;
-    WebBrowserFEpreview.ControlInterface.ExecWB(OLECMDID_ZOOM, OLECMDEXECOPT_DODEFAULT, vIn, vOut);
-end;
+//procedure TMainform.SetFontSize(Size: integer);
+//var
+//  vIn, vOut: Olevariant;
+//begin
+//    vIn := Size;
+//    WebBrowserFEpreview.ControlInterface.ExecWB(OLECMDID_ZOOM, OLECMDEXECOPT_DODEFAULT, vIn, vOut);
+//end;
 
-function TMainform.GetFontSize: integer;
-var
-  vIn, vOut: Olevariant;
-begin
-    result := 0;
-    vIn := null;
-    WebBrowserFEpreview.ControlInterface.ExecWB(OLECMDID_ZOOM, OLECMDEXECOPT_DODEFAULT, vIn, vOut);
-    result := vOut;
-end;
+//function TMainform.GetFontSize: integer;
+//var
+//  vIn, vOut: Olevariant;
+//begin
+//    vIn := null;
+//    WebBrowserFEpreview.ControlInterface.ExecWB(OLECMDID_ZOOM, OLECMDEXECOPT_DODEFAULT, vIn, vOut);
+//    result := vOut;
+//end;
 
 procedure TMainform.Informazioni1Click(Sender: TObject);
 begin
