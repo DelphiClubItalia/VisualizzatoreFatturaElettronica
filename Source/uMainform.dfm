@@ -65,8 +65,6 @@ object Mainform: TMainform
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 2
-    ExplicitTop = 78
-    ExplicitHeight = 616
     DesignSize = (
       240
       694)
@@ -138,7 +136,6 @@ object Mainform: TMainform
       Anchors = [akLeft, akTop, akRight, akBottom]
       Caption = 'Fatture passive'
       TabOrder = 0
-      ExplicitHeight = 252
       DesignSize = (
         223
         330)
@@ -186,7 +183,6 @@ object Mainform: TMainform
       ParentBackground = False
       ParentColor = False
       TabOrder = 2
-      ExplicitTop = 490
       DesignSize = (
         223
         118)
@@ -343,15 +339,7 @@ object Mainform: TMainform
       Anchors = [akLeft, akRight, akBottom]
       TabOrder = 3
       OnSelect = ComboBoxStileSelect
-      ExplicitTop = 458
     end
-  end
-  object XMLDocument1: TXMLDocument
-    NodeIndentStr = #9
-    Options = [doNodeAutoIndent]
-    Left = 289
-    Top = 102
-    DOMVendorDesc = 'MSXML'
   end
   object PopupMenuMainform: TPopupMenu
     Left = 289

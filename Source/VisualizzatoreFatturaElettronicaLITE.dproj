@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <ProjectGuid>{5BCC9F6E-6BF3-46AE-81A8-0E9C917A0381}</ProjectGuid>
-        <ProjectVersion>15.4</ProjectVersion>
+        <ProjectVersion>18.4</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <MainSource>VisualizzatoreFatturaElettronicaLITE.dpr</MainSource>
         <Base>True</Base>
@@ -15,11 +15,6 @@
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
         <Base_Win32>true</Base_Win32>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
-        <Base_Win64>true</Base_Win64>
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
@@ -56,17 +51,21 @@
         <DCC_S>false</DCC_S>
         <DCC_F>false</DCC_F>
         <DCC_K>false</DCC_K>
+        <DCC_SYMBOL_PLATFORM>false</DCC_SYMBOL_PLATFORM>
+        <DCC_UNIT_PLATFORM>false</DCC_UNIT_PLATFORM>
+        <VerInfo_Locale>1040</VerInfo_Locale>
+        <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <DCC_UsePackage>frxe20;EmbeddedWebBrowser_DXE4;FlatButton;SMImportXE6;EurekaLogCore;CEF4Delphi;frxIBX20;NWSComps_Shared_DXE6;NxStandard6Dsgn_dxe6;FireDACSqliteDriver;dWinlock;DBXSqliteDriver;FireDACPgDriver;office2010rt;fmx;IndySystem;DCEF_XE6;TeeDB;tethering;vclAbsDBd20;NxLayout6Run_dxe6;inetdbbde;vclib;DBXInterBaseDriver;NxInspectorDsgn_dxe6;NxInspectorRun_dxe6;Telegram;DbxCommonDriver;crcontrols200;vclimg;NxCollection6Dsgn_dxe6;dbxcds;vclshlctrls;MetropolisUILiveTile;NxCommonDsgn_dxe6;JH_WinTab_dxe6;PKIEDB20;NWSComps_IEPaintEngine_dxe6;vcldb;NxStandard6Run_dxe6;PrintPreviewPack;vcldsnap;OnixComps;PICSHOWpack;SMCmpntXE6;fmxFireDAC;dacvcl200;UIRibbonPackage;TMSFMXZBarReaderPkgDXE6;CCComponents;CustomIPTransport;vclribbon;GR32_D;dsnap;IndyIPServer;fmxase;vcl;IndyCore;dacfmx200;NxDBGrid6Run_dxe6;IndyIPCommon;CloudService;CodeSiteExpressPkg;FmxTeeUI;FireDACIBDriver;NxInspector6Run_dxe6;NWSComps_RGBCurves_dxe6;KZ;soapserver;NxDBGridRun_dxe6;inetdbxpress;NxCollectionDsgn_dxe6;frxTee20;fsTee20;dsnapxml;fsIBX20;AVPackDXE6;XPMENUPACKXE6;tmsdXE6;adortl;frxDB20;BackgroundWorker;FireDACASADriver;rkSliderPack;xbtab;PngComponentsD;CamRemoteDXE6;bindcompfmx;TMSWebGMapsPkgDEDXE6;frx20;fsADO20;vcldbx;FireDACODBCDriver;RESTBackendComponents;rtl;dbrtl;DbxClientDriver;dclZipForged20;FireDACCommon;bindcomp;inetdb;PKIECtrl20;GR32_R;dac200;Tee;clinetsuiteSSHdXE6;NxCollection6Run_dxe6;NxGrid6Run_dxe6;Klever;NWSComps_Proc_Addon_DXE6;vclFireDAC;frxDBX20;xmlrtl;svnui;ibxpress;NxGridDsgn_dxe6;LBpack;vclZipForged20;TMSWebGMapsPkgDXE6;IndyProtocols;DBXMySQLDriver;NxDBGrid6Dsgn_dxe6;FireDACCommonDriver;O408_r;bindcompdbx;soaprtl;bindengine;vclactnband;FMXTee;TeeUI;bindcompvcl;DragDropDXE6;clinetsuitedXE6;unidacvcl200;vclie;NxCollectionRun_dxe6;DSPack_DXE6;unidacfmx200;FireDACADSDriver;vcltouch;NxDBGridDsgn_dxe6;unidac200;NxInspector6Dsgn_dxe6;vclPerfUtilsV4D20;VclSmp;FireDAC;VCLRESTComponents;Intraweb;PasLibVlcPlayer;NxCommonRun_dxe6;mySQLDAC20;ATFileNotificationPACK;dsnapcon;speech_sapi54;NxGridRun_dxe6;inet;fsDB20;fmxobj;dclAbsDBd20;SendKeysComponent;FireDACMySQLDriver;soapmidas;vclx;tmsexdXE6;fs20;RealTimeMarqueeXE6;svn;Alarm;fmxdae;AppBarD2005;RESTComponents;usb_detect;xptab;bdertl;NWSComps_ThumbsBrowser_DXE6;FireDACMSAccDriver;dbexpress;frxADO20;IndyIPClient;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_Win64)'!=''">
-        <DCC_UsePackage>NWSComps_Shared_DXE6;NxStandard6Dsgn_dxe6;FireDACSqliteDriver;DBXSqliteDriver;FireDACPgDriver;office2010rt;fmx;IndySystem;TeeDB;tethering;vclAbsDBd20;NxLayout6Run_dxe6;vclib;DBXInterBaseDriver;NxInspectorDsgn_dxe6;NxInspectorRun_dxe6;DbxCommonDriver;vclimg;NxCollection6Dsgn_dxe6;dbxcds;vclshlctrls;MetropolisUILiveTile;NxCommonDsgn_dxe6;JH_WinTab_dxe6;PKIEDB20;NWSComps_IEPaintEngine_dxe6;vcldb;NxStandard6Run_dxe6;vcldsnap;fmxFireDAC;CustomIPTransport;vclribbon;dsnap;IndyIPServer;fmxase;vcl;IndyCore;NxDBGrid6Run_dxe6;IndyIPCommon;CloudService;FmxTeeUI;FireDACIBDriver;NxInspector6Run_dxe6;NWSComps_RGBCurves_dxe6;soapserver;NxDBGridRun_dxe6;inetdbxpress;NxCollectionDsgn_dxe6;dsnapxml;tmsdXE6;adortl;FireDACASADriver;PngComponentsD;bindcompfmx;FireDACODBCDriver;RESTBackendComponents;rtl;dbrtl;DbxClientDriver;FireDACCommon;bindcomp;inetdb;PKIECtrl20;Tee;NxCollection6Run_dxe6;NxGrid6Run_dxe6;NWSComps_Proc_Addon_DXE6;vclFireDAC;xmlrtl;ibxpress;NxGridDsgn_dxe6;IndyProtocols;DBXMySQLDriver;NxDBGrid6Dsgn_dxe6;FireDACCommonDriver;O408_r;bindcompdbx;soaprtl;bindengine;vclactnband;FMXTee;TeeUI;bindcompvcl;clinetsuitedXE6;vclie;NxCollectionRun_dxe6;FireDACADSDriver;vcltouch;NxDBGridDsgn_dxe6;NxInspector6Dsgn_dxe6;VclSmp;FireDAC;VCLRESTComponents;Intraweb;PasLibVlcPlayer;NxCommonRun_dxe6;mySQLDAC20;dsnapcon;NxGridRun_dxe6;inet;fmxobj;FireDACMySQLDriver;soapmidas;vclx;tmsexdXE6;fmxdae;RESTComponents;NWSComps_ThumbsBrowser_DXE6;FireDACMSAccDriver;dbexpress;IndyIPClient;$(DCC_UsePackage)</DCC_UsePackage>
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_ExeOutput>.\</DCC_ExeOutput>
@@ -92,7 +91,9 @@
         <DCC_ExeOutput>.\</DCC_ExeOutput>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <Icon_MainIcon>VisualizzatoreFatturaElettronica_Icon1.ico</Icon_MainIcon>
+        <Icon_MainIcon>VisualizzatoreFatturaElettronicaLITE_Icon.ico</Icon_MainIcon>
+        <BT_BuildType>Debug</BT_BuildType>
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -127,18 +128,18 @@
                     <Source Name="MainSource">VisualizzatoreFatturaElettronicaLITE.dpr</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="C:\Windows\system32\FMX_MediaLabBasicDsnDXE6.bpl">File C:\Windows\system32\FMX_MediaLabBasicDsnDXE6.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Windows\system32\FMX_VideoLabBasicDsnDXE6.bpl">File C:\Windows\system32\FMX_VideoLabBasicDsnDXE6.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k250.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp250.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
-            <Deployment/>
+            <Deployment Version="3"/>
             <Platforms>
                 <Platform value="Win32">True</Platform>
-                <Platform value="Win64">False</Platform>
             </Platforms>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
     <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
     <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+    <Import Project="$(MSBuildProjectName).deployproj" Condition="Exists('$(MSBuildProjectName).deployproj')"/>
 </Project>
