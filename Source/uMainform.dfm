@@ -1,9 +1,9 @@
 object Mainform: TMainform
   Left = 0
   Top = 0
-  Caption = 'Visualizzatore fattura elettronica LITE '
-  ClientHeight = 713
-  ClientWidth = 1233
+  Caption = 'Visualizzatore Fattura Elettronica'
+  ClientHeight = 684
+  ClientWidth = 1184
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -14,27 +14,31 @@ object Mainform: TMainform
   PopupMenu = PopupMenuMainform
   Position = poScreenCenter
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 15
   object Splitter1: TSplitter
     Left = 240
     Top = 0
     Width = 6
-    Height = 694
+    Height = 665
     Color = 15132390
     ParentColor = False
+    ExplicitHeight = 694
   end
   object WebBrowserFEpreview: TWebBrowser
     Left = 246
     Top = 0
-    Width = 987
-    Height = 694
+    Width = 938
+    Height = 665
     Align = alClient
     TabOrder = 0
     OnDocumentComplete = WebBrowserFEpreviewDocumentComplete
     ExplicitTop = -6
+    ExplicitWidth = 987
+    ExplicitHeight = 694
     ControlData = {
-      4C00000002660000BA4700000000000000000000000000000000000000000000
+      4C000000F2600000BB4400000000000000000000000000000000000000000000
       000000004C000000000000000000000001000000E0D057007335CF11AE690800
       2B2E12620A000000000000004C0000000114020000000000C000000000000046
       8000000000000000000000000000000000000000000000000000000000000000
@@ -42,8 +46,8 @@ object Mainform: TMainform
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 694
-    Width = 1233
+    Top = 665
+    Width = 1184
     Height = 19
     Panels = <
       item
@@ -60,19 +64,17 @@ object Mainform: TMainform
     Left = 0
     Top = 0
     Width = 240
-    Height = 694
+    Height = 665
     Align = alLeft
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 2
-    ExplicitTop = 78
-    ExplicitHeight = 616
     DesignSize = (
       240
-      694)
+      665)
     object Label1: TLabel
       Left = 8
-      Top = 539
+      Top = 510
       Width = 52
       Height = 15
       Anchors = [akLeft, akRight, akBottom]
@@ -81,10 +83,10 @@ object Mainform: TMainform
     end
     object SpeedButton1: TSpeedButton
       Left = 210
-      Top = 537
+      Top = 508
       Width = 23
       Height = 22
-      Anchors = [akLeft, akBottom]
+      Anchors = [akRight, akBottom]
       Glyph.Data = {
         36050000424D3605000000000000360400002800000010000000100000000100
         08000000000000010000220B0000220B00000001000000010000942929009431
@@ -129,55 +131,11 @@ object Mainform: TMainform
         4040404040404230130F48190A3C423A3A3A3A3A3A3A4230130F48190A394643
         4343434343434630130F4848092D3A363636363636363A2A0748}
       OnClick = SpeedButton1Click
-    end
-    object GroupBox1: TGroupBox
-      Left = 8
-      Top = 4
-      Width = 223
-      Height = 330
-      Anchors = [akLeft, akTop, akRight, akBottom]
-      Caption = 'Fatture passive'
-      TabOrder = 0
-      ExplicitHeight = 252
-      DesignSize = (
-        223
-        330)
-      object ListBoxFEin: TListBox
-        Left = 7
-        Top = 18
-        Width = 210
-        Height = 304
-        Anchors = [akLeft, akTop, akRight, akBottom]
-        ItemHeight = 15
-        TabOrder = 0
-        OnDblClick = ListBoxFEinDblClick
-      end
-    end
-    object GroupBox2: TGroupBox
-      Left = 8
-      Top = 339
-      Width = 223
-      Height = 188
-      Anchors = [akLeft, akRight, akBottom]
-      Caption = 'Fatture attive'
-      TabOrder = 1
-      DesignSize = (
-        223
-        188)
-      object ListBoxFEout: TListBox
-        Left = 7
-        Top = 17
-        Width = 210
-        Height = 162
-        Anchors = [akLeft, akTop, akRight, akBottom]
-        ItemHeight = 15
-        TabOrder = 0
-        OnDblClick = ListBoxFEoutDblClick
-      end
+      ExplicitTop = 537
     end
     object GroupBox3: TGroupBox
       Left = 8
-      Top = 568
+      Top = 539
       Width = 223
       Height = 118
       Anchors = [akLeft, akRight, akBottom]
@@ -185,8 +143,7 @@ object Mainform: TMainform
       Color = clBtnFace
       ParentBackground = False
       ParentColor = False
-      TabOrder = 2
-      ExplicitTop = 490
+      TabOrder = 0
       DesignSize = (
         223
         118)
@@ -196,7 +153,7 @@ object Mainform: TMainform
         Width = 210
         Height = 25
         Anchors = [akLeft, akTop, akRight]
-        Caption = 'Visualizza file esterno'
+        Caption = 'Apri'
         Glyph.Data = {
           36050000424D3605000000000000360400002800000010000000100000000100
           08000000000000010000720B0000720B00000001000000010000003100000039
@@ -336,14 +293,22 @@ object Mainform: TMainform
     end
     object ComboBoxStile: TComboBox
       Left = 62
-      Top = 536
+      Top = 507
       Width = 144
       Height = 23
       Style = csDropDownList
       Anchors = [akLeft, akRight, akBottom]
-      TabOrder = 3
+      TabOrder = 1
       OnSelect = ComboBoxStileSelect
-      ExplicitTop = 458
+    end
+    object gbAllegati: TGroupBox
+      Left = 8
+      Top = 3
+      Width = 223
+      Height = 489
+      Anchors = [akLeft, akTop, akRight, akBottom]
+      Caption = ' Allegati '
+      TabOrder = 2
     end
   end
   object XMLDocument1: TXMLDocument
@@ -356,10 +321,6 @@ object Mainform: TMainform
   object PopupMenuMainform: TPopupMenu
     Left = 289
     Top = 220
-    object Aggiornalistadocumenti1: TMenuItem
-      Caption = 'Aggiorna lista documenti'
-      OnClick = Aggiornalistadocumenti1Click
-    end
     object N1: TMenuItem
       Caption = '-'
     end
